@@ -5,12 +5,12 @@ const userInput = readline.createInterface({input, output});
 // Einde van userInput voorbereidennode
 
 
-let getal = 0
+let getal;
+let som = 0;
 
-while(getal <= 12){
-    console.log(getal);
-    getal += 3;
-
-
-    
+while(som <= 100){
+   getal = parseFloat(await userInput.question('Geef een getal in: '));
+   som += getal;
 }
+
+for(let teller = 0; teller < 100; teller++)
