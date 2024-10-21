@@ -1,26 +1,48 @@
 import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-const userInput = readline.createInterface({input, output});
+const userInput = readline.createInterface({ input, output });
 
-// Vraag om de nodige input
-let start = parseFloat(await userInput.question('Met welk getal beginnen we? '));
-let end = parseFloat(await userInput.question('Met welk getal eindigen we? '));
-let deler1 = parseFloat(await userInput.question('Wat is het eerste getal waarop we testen? '));
-let deler2 = parseFloat(await userInput.question('Wat is het tweede getal waarop we testen? '));
+// Vraag de gebruiker om invoer
+let hoogte = parseInt(await userInput.question('Geef de hoogte van de piramide in: '));
+let startTopInput = await userInput.question('Moet de piramide van boven naar beneden gaan? (true/false): ');
+let startLeftInput = await userInput.question('Moet de piramide links beginnen? (true/false): ');
 
+// Zet de invoer om naar boolean waarden
+let startTop = startTopInput.toLowerCase() === 'true';
+let startLeft = startLeftInput.toLowerCase() === 'true';
 
-
-function printDeelbareGetallen(start, end, deler1, deler2) {
-    console.log(`Getallen tussen ${start} en ${end} die deelbaar zijn door zowel ${deler1} als ${deler2}:`);
-    for (let i = start; i <= end; i++) {
-        if (i % deler1 === 0 && i % deler2 === 0) {
-            console.log(i);
+// Functie voor normale sterrenpiramide
+function sterrenPiramide(hoogte) {
+    for (let i = 1; i <= hoogte; i++) {
+        let sterren = '';
+        for (let j = 1; j <= i; j++) {
+            sterren += '*';
         }
+        console.log(sterren);
     }
 }
 
+// Functie voor omgekeerde sterrenpiramide
+function sterrenPiramideOmgekeerd(hoogte) {
+    for (let i = hoogte; i >= 1; i--) {
+        let sterren = '';
+        for (let j = 1; j <= i; j++) {
+            sterren += '*';
+        }
+        console.log(sterren);
+    }
+}
 
-printDeelbareGetallen(start, end, deler1, deler2);
+// Functie aanroepen op basis van de boolean waarden
+if (startTop === true) {
+    // Normale piramide
+    console.log("Normale sterrenpiramide:");
+    sterrenPiramide(hoogte);
+} else {
+    // Omgekeerde piramide
+    console.log("Omgekeerde sterrenpiramide:");
+    sterrenPiramideOmgekeerd(hoogte);
+}
 
-
+// Sluit de readline-interface
 userInput.close();
