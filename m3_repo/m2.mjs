@@ -1,4 +1,4 @@
-let hoogte = 5;
+let hoogte = 4;
 
 for (let i = 1; i <= hoogte; i++) {
     let ster = '';  
@@ -6,4 +6,4 @@ for (let i = 1; i <= hoogte; i++) {
         ster += '*'; 
     }
     console.log(ster); 
-}
+} 

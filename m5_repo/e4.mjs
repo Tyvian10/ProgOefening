@@ -11,8 +11,11 @@ function factorial(number) {
    
     for (let i = 1; i <= number; i++) {
         
-        result = result * i;
+        result = result *=i;
     }
 
     return result;
+   
 }
+
+ console.log(factorial)

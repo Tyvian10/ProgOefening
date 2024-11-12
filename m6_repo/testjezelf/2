@@ -1,0 +1,19 @@
+// Begin van userInput voorbereiden
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
+
+const userInput = readline.createInterface({ input, output });
+
+let namen = [];
+let naam;
+
+do {
+    naam = await userInput.question('Geef een naam in (of druk op Enter om te stoppen): ');
+    if (naam) {
+        namen.push(naam);
+    }
+} while (naam); 
+
+console.log('De ingevoerde namen zijn:', namen);
+
+await userInput.close();

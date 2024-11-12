@@ -4,14 +4,13 @@ import { stdin as input, stdout as output } from 'node:process';
 const userInput = readline.createInterface({input, output});
 
 
-let max = parseFloat(await userInput.question('Geef een nummer in'))
+let max = 10
 
-
-let min = parseFloat(await userInput.question('Geef een nummer in'))
-
+let min = 1
 
 
 function random(min, max) {
+    const nummer =  userInput.question('Geef een getal: ')
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
